@@ -15,7 +15,7 @@ public class DateneingangRestService {
     private ValidierenInterfaceImpl nachrichtValidierenImpl;
 
     @PostMapping(value = "/nachricht")
-    public ResponseEntity<String> verarbeiteUnEdifactNachricht(@RequestBody String nachricht) {
+    public ResponseEntity<String> verarbeiteNachricht(@RequestBody String nachricht) {
 
         System.out.println(nachricht);
         if (nachricht == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
