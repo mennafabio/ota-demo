@@ -33,7 +33,7 @@ This will start following containers
 - PostgreSQL,
 - PGAdmin (optional),
 - OpenTestingAPI v1.37,
-- Kafka Zookeeperless Mode (Kafka KRaft).
+- Kafka Zookeeperless Mode (Kafka KRaft) (thanks to [bashj79/kafka-kraft](https://hub.docker.com/r/bashj79/kafka-kraft))
 
 GUI of OpenTestingAPI will be available under localhost:50000
 ## API Reference
