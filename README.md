@@ -35,7 +35,7 @@ This will start following containers
 - OpenTestingAPI v1.37,
 - Kafka Zookeeperless Mode (Kafka KRaft).
 
-
+GUI of OpenTestingAPI will be available under localhost:50000
 ## API Reference
 
 As this is just a small application, there is only a POST Mapping needed.
