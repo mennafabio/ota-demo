@@ -29,12 +29,22 @@ services:
     networks:
       - demo
     restart: unless-stopped
+
   ota:
     container_name: opentestingapi
     image: ghcr.io/opentestingapi/opentesting:1.37
     ports:
       - '50000:50000'
     network_mode: host
+    restart: unless-stopped
+
+  kafka:
+    container_name: kafka-kraft
+    image: bashj79/kafka-kraft
+    ports:
+      - '9092:9092'
+    networks:
+      - demo
     restart: unless-stopped
 
 networks:
