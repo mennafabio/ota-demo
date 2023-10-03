@@ -6,7 +6,7 @@ This is a simple Spring Boot Application holding two services which are used to 
 ## Related
 
 This Project is related to
-[OpenTestingAPI](https://github.com/opentestingapi) by
+[OpenTestingAPI](https://github.com/opentestingapi) 
 
 
 ## Installation
@@ -53,7 +53,7 @@ As this is just a small application, there is only a POST Mapping needed.
 
 ## Usage/Examples
 
-Example POST
+Example POST using e.g IntelliJ or Insomnia..
 
 POST http://localhost:8089/validation-service/rest/dateneingang/v1/nachricht
 
@@ -70,8 +70,11 @@ with body
 }
 ```
 
-
+uploading the provided example testcase
+```shell
+.\uploadtestcase.sh .\testcase\testcase-01\ 
+```
+if there is no CRON-Job specified in the test, just execute the testcase manually over the GUI
 ## Documentation
 
-[Documentation](https://opentestingapi.github.io/)
-
+[OpenTestAPI Specification](https://opentestingapi.github.io/specification/version-1.5/)
