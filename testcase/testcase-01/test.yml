@@ -1,0 +1,76 @@
+testapi: '1.1'
+id: testcase-01
+active: true
+description: rest test case
+labels:
+  - stage-local
+todos:
+  - 'update readme'
+injections:
+  - injectid: inject-rest-1
+    cron: []
+    active: true
+    service:
+      type: rest
+      connectstring: 'http://host.docker.internal:8089/validation-service/rest/dateneingang/v1/nachricht'
+      username: ''
+      password: ''
+      custom:
+        - key: type
+          value: POST
+        - key: header
+          value: header_rest_json.json
+    sourcefile: source_rest_1.json
+    timetolive: 10s
+    checks:
+      - check-kafka-1
+    replacements:
+      - key: "#VORNAME#"
+        value:
+          - order: 1
+            type: list
+            value: "Felix|Thomas|Lisa|Anna"
+      - key: "#AUSWEISNR#"
+        value:
+          - order: 2
+            type: regex
+            value: "[0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ]{9}"
+checks:
+  - checkid: check-kafka-1
+    mandatory: true
+    active: true
+    service:
+      type: kafka
+      connectstring: 'docker:9092'
+      username: ''
+      password: ''
+      custom:
+        - key: topic
+          value: nachricht_verarbeiten
+        - key: group.id
+          value: kafka_001.check-kafka-1.group
+    validations:
+      - order: 1
+        request: ''
+        response:
+          - check_kafka_1.txt
+        type: contains
+    maxwaittime: 60s
+    checks:
+      - check-postgresql-1
+  - checkid: check-postgresql-1
+    mandatory: true
+    active: true
+    service:
+      type: jdbc
+      connectstring: jdbc:postgresql://localhost:5432/postgres
+      username: admin
+      password: password
+    validations:
+      - order: 1
+        request: check_postgresql_param_1.sql
+        response:
+          - check_postgresql_1.json
+        type: contains
+    maxwaittime: 90s
+

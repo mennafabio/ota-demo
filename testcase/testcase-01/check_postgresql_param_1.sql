@@ -1,0 +1,1 @@
+select row_to_json(user_ety) from user_ety where ausweisnr = '#AUSWEISNR#' limit 1
